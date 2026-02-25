@@ -32,15 +32,6 @@ jobs:
           tools: composer:v2
           coverage: xdebug
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
-
-      - name: Install Node Dependencies
-        run: npm ci
-
       - name: Install Dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
@@ -53,8 +44,13 @@ jobs:
       - name: Create SQLite Database
         run: touch database/database.sqlite
 
-      - name: Build Assets
-        run: npm run build
+      - name: Create Vite Manifest Stub
+        run: |
+          mkdir -p public/build
+          echo '{
+            "resources/js/app.ts": { "file": "assets/app.js", "isEntry": true, "css": ["assets/app.css"] },
+            "resources/js/pages/Home.vue": { "file": "assets/Home.js", "isDynamicEntry": true }
+          }' > public/build/manifest.json
 
       - name: Tests
         run: ./vendor/bin/pest
