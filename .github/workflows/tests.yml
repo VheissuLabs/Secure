@@ -48,8 +48,8 @@ jobs:
         run: |
           mkdir -p public/build
           echo '{
-            "resources/js/app.ts": { "file": "assets/app.js", "isEntry": true, "css": ["assets/app.css"] },
-            "resources/js/pages/Home.vue": { "file": "assets/Home.js", "isDynamicEntry": true }
+            "resources/js/app.ts": { "file": "assets/app.js", "src": "resources/js/app.ts", "isEntry": true, "css": ["assets/app.css"] },
+            "resources/js/pages/Home.vue": { "file": "assets/Home.js", "src": "resources/js/pages/Home.vue", "isDynamicEntry": true }
           }' > public/build/manifest.json
 
       - name: Tests
