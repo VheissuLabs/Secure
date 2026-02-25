@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__laravel-boost__get-absolute-url",
+      "mcp__laravel-boost__last-error",
+      "mcp__laravel-boost__tinker",
+      "mcp__herd__get_site_information",
+      "Bash(curl:*)",
+      "Bash(php artisan:*)",
+      "mcp__herd__stop_debug_session",
+      "Bash(vendor/bin/pint --dirty --format agent 2>&1 && npm run build 2>&1)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "laravel-boost",
+    "herd"
+  ]
+}
